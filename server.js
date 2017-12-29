@@ -24,6 +24,31 @@ mongoose.connect(db, function(err, response){
 	}
 });
 
+var router = express.Router();
+
+
+//GET-this will configure the get route to access the DB
+router.get('/api/users', function(request, response){
+	//this starts a MongoDB query to find the users in the database
+	Model.find({}, function(err, users){ //check for an error accessing the DB
+		if(err){
+			response.status(404).send(err); /*this says that is there is an error, send the status code 404 back to the client */
+		} else {
+			response.status(200).send(users);
+		}
+
+	})
+})
+
+
+//middleware to create the router for the application
+//this can be done without express, but we'll use express and configure the API endpoints
+
+
+
+app.use('/', router);
+
+
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

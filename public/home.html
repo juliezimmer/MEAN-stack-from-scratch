@@ -1,0 +1,27 @@
+<div class="contaioner">
+   <h1> {{vm.title}}</h1> <!-- this will pull "You are in the Home Controller" from the app.js file where vm.title = "You are in the Home Controller" is defined inside app.controller for the Home Controller. -->
+    <div class="container users-container"> <!-- this is a div that will house all the users, so we need to get all the users -->
+        <table class="table table-bordered table-striped table-hovered table-condensed">
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+            <tr ng-repeat="user in vm.users">
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-md" ng-hide="addUser == true;" ng-click="addUser=!addUser">Add a User</button>
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" style="width:300px;">
+        </div>
+    
+        <div class="form-group">
+            <label for="name">Age</label>
+            <input type="text" id="age" class="form-control" style="width:300px;">
+        </div>
+        <button class="btn btn-success" ng-click="addUser = false;">Back</button>
+    </div>
